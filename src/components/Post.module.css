@@ -1,0 +1,9 @@
+.icon {
+   width: 80px;
+  height: 80px;
+  background-size: 80px 80px;
+}
+
+.post {
+  background: red;
+}
