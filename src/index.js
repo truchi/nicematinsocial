@@ -1,25 +1,24 @@
-import Twetch from '@twetch/sdk';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Twetch from "@twetch/sdk";
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
 // window.twetchPay.pay({ outputs: [{
-    // to: '1harrywon46Aq2b2TK29wKviKUiDzc9EQ',
-    // amount: 0.0002
-  // }]
+// to: '1harrywon46Aq2b2TK29wKviKUiDzc9EQ',
+// amount: 0.0002
+// }]
 // });
 
 (async () => {
-
   const twetch = new Twetch({
-    clientIdentifier: "c9009915-109f-456e-9432-cdc94013e599"
+    clientIdentifier: "c9009915-109f-456e-9432-cdc94013e599",
   });
 
-  const auth = await twetch.authenticate()
-  console.warn("", auth)
-  console.log(twetch.wallet.address())
+  //const auth = await twetch.authenticate()
+  //console.warn("", auth)
+  //console.log(twetch.wallet.address())
 
   const res = await twetch.query(`
     query {
@@ -49,9 +48,9 @@ import reportWebVitals from './reportWebVitals';
 
   ReactDOM.render(
     <React.StrictMode>
-      <App posts={res.allPosts.nodes} twetch={twetch}/>
+      <App posts={res.allPosts.nodes} twetch={twetch} />
     </React.StrictMode>,
-    document.getElementById('root')
+    document.getElementById("root")
   );
 })();
 
