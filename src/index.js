@@ -1,5 +1,5 @@
-import Twetch from "@twetch/sdk";
 import React from "react";
+import { TWETCH, TWLogin, IMBLogin } from "./login";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
@@ -12,15 +12,12 @@ import reportWebVitals from "./reportWebVitals";
 // });
 
 (async () => {
-  const twetch = new Twetch({
-    clientIdentifier: "c9009915-109f-456e-9432-cdc94013e599",
-  });
+  console.log({ TWETCH });
+  let user = await TWLogin();
+  console.log(user);
+  IMBLogin();
 
-  //const auth = await twetch.authenticate()
-  //console.warn("", auth)
-  //console.log(twetch.wallet.address())
-
-  const res = await twetch.query(`
+  /* const res = await twetch.query(`
     query {
       allPosts(filter: { bContent: { includes: "$nce" } }) {
         nodes {
@@ -45,14 +42,13 @@ import reportWebVitals from "./reportWebVitals";
     }
   `);
   console.log(res);
-
+*/
   ReactDOM.render(
-    <React.StrictMode>
-      <App posts={res.allPosts.nodes} twetch={twetch} />
-    </React.StrictMode>,
+    <React.StrictMode></React.StrictMode>,
     document.getElementById("root")
   );
 })();
+// <App posts={[]} twetch={twetch} />
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
